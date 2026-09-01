@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Urbano Anónimo PWA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+</head>
+<body>
+    <header>
+        <h1>Reporte Cívico Anónimo</h1>
+        <p>Sistema independiente de monitoreo urbano</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Nuevo Reporte Urbano</h2>
+            <form id="reportForm">
+                <label for="category">Tipo de Problema:</label>
+                <select id="category" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="bache">Bache en vialidad</option>
+                    <option value="luminaria">Luminaria fundida</option>
+                    <option value="basurero">Basurero clandestino</option>
+                </select>
+
+                <label for="mediaCapture">Evidencia Fotográfica:</label>
+                <input type="file" id="mediaCapture" accept="image/*" capture="environment" required>
+                
+                <div class="location-box">
+                    <button type="button" id="getGeoBtn">Obtener Ubicación GPS</button>
+                    <span id="geoStatus">Ubicación no capturada</span>
+                </div>
+
+                <button type="submit" id="submitBtn" disabled>Enviar Reporte Anónimo</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h3>Mis Reportes Locales (Offline)</h3>
+            <div id="reportsList"></div>
+            <button type="button" id="clearDataBtn" class="danger-btn">Borrar Caché Local</button>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
