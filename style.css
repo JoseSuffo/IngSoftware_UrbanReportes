@@ -1,99 +1,180 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Paleta de colores vibrante y moderna */
+:root {
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    --gradient-hover: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+    --bg-gradient: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+    --accent-glow: rgba(168, 85, 247, 0.25);
+    --disabled-bg: #e2e8f0;
+    --disabled-text: #94a3b8;
+    --radius: 16px;
+    --shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 8px 10px -6px rgba(168, 85, 247, 0.1);
 }
 
+/* Estructura general de la página con espaciado amplio y equilibrado */
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
-.app-container {
+/* Contenedor principal con distribución espaciada y márgenes internos generosos */
+.container {
     width: 100%;
-    max-width: 480px;
-    min-width: 320px;
-    padding: 16px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 460px;
+    background-color: var(--card-bg);
+    border: 2px solid rgba(168, 85, 247, 0.15);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 40px 36px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-header h1 {
-    font-size: 1.25rem;
+/* Título estilizado con separación inferior clara */
+.container h2, h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-align: center;
-    margin-bottom: 16px;
-    color: #1f2937;
+    margin-top: 0;
+    margin-bottom: 28px;
+    letter-spacing: -0.025em;
 }
 
-.report-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+/* Etiquetas de formulario con separación superior para evitar aglomeración */
+label, .container label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+/* Select interactivo con respiro interno y externo */
+select, #category {
     width: 100%;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    width: 100%;
-}
-
-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #4b5563;
-}
-
-select, input[type="file"], button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    background-color: #fff;
-}
-
-select:focus, input:focus {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background-color: #faf5ff;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    transition: all 0.25s ease;
+    box-sizing: border-box;
 }
 
-.preview-container {
+select:focus, #category:focus {
+    border-color: #a855f7;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+/* Input de archivo estilizado con mayor área de interacción y espacio */
+input[type="file"], #evidence {
     width: 100%;
-    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    padding: 12px;
+    background: #faf5ff;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    margin-top: 4px;
+}
+
+input[type="file"]:hover {
+    border-color: #a855f7;
+}
+
+input[type="file"]::file-selector-button {
+    background: var(--gradient-primary);
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 14px;
+    transition: opacity 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    opacity: 0.9;
+}
+
+/* Animación sutil de aparición para la vista previa con márgenes independientes */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 #imagePreview {
-    border-radius: 6px;
-    margin-top: 8px;
-    max-height: 200px;
-    object-fit: contain;
+    display: none;
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 16px;
+    border: 2px solid #a855f7;
+    animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.btn-submit {
-    background-color: #2563eb;
-    color: white;
-    font-weight: 600;
+/* Botón de envío con separación superior destacada y padding ergonómico */
+#submitBtn {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: var(--gradient-primary);
     border: none;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+    margin-top: 24px;
 }
 
-.btn-submit:disabled {
-    background-color: #9ca3af;
+#submitBtn:hover:not(:disabled) {
+    background: var(--gradient-hover);
+    box-shadow: 0 6px 16px rgba(168, 85, 247, 0.4);
+    transform: translateY(-2px);
+}
+
+#submitBtn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Estado deshabilitado neutro */
+#submitBtn:disabled {
+    background: var(--disabled-bg);
+    color: var(--disabled-text);
     cursor: not-allowed;
-}
-
-.btn-submit:not(:disabled):hover {
-    background-color: #1d4ed8;
+    box-shadow: none;
+    transform: none;
 }
