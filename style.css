@@ -5,7 +5,7 @@
     --bg-gradient: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 50%, #f8fafc 100%);
     --card-bg: #ffffff;
     --text-main: #0f172a;
-    --text-muted: #64748b;
+    --text-muted: #475569;
     --border-color: #cbd5e1;
     --accent-glow: rgba(168, 85, 247, 0.25);
     --disabled-bg: #e2e8f0;
@@ -14,7 +14,6 @@
     --shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 8px 10px -6px rgba(168, 85, 247, 0.1);
 }
 
-/* Estructura general de la página con espaciado amplio y equilibrado */
 body {
     background: var(--bg-gradient);
     color: var(--text-main);
@@ -28,27 +27,40 @@ body {
     box-sizing: border-box;
 }
 
-/* Contenedor principal con distribución espaciada y márgenes internos generosos */
-.container {
+.app-container {
     width: 100%;
     max-width: 460px;
     background-color: var(--card-bg);
     border: 2px solid rgba(168, 85, 247, 0.15);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    padding: 40px 36px;
+    padding: 32px 36px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* Título estilizado con separación inferior clara */
-.container h2, h2 {
+/* Feature 3: Panel UI Gamificación */
+.gamification-panel {
+    display: flex;
+    justify-content: space-between;
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.app-container h1 {
     font-size: 1.5rem;
     font-weight: 800;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
     margin-top: 0;
@@ -56,18 +68,16 @@ body {
     letter-spacing: -0.025em;
 }
 
-/* Etiquetas de formulario con separación superior para evitar aglomeración */
-label, .container label {
+label {
     display: block;
     font-size: 0.9rem;
     font-weight: 700;
-    color: #475569;
+    color: var(--text-muted);
     margin-top: 12px;
     margin-bottom: 8px;
 }
 
-/* Select interactivo con respiro interno y externo */
-select, #category {
+select, input[type="file"] {
     width: 100%;
     padding: 14px 16px;
     font-size: 0.95rem;
@@ -80,29 +90,10 @@ select, #category {
     box-sizing: border-box;
 }
 
-select:focus, #category:focus {
+select:focus, input[type="file"]:hover {
     border-color: #a855f7;
     background-color: #ffffff;
     box-shadow: 0 0 0 4px var(--accent-glow);
-}
-
-/* Input de archivo estilizado con mayor área de interacción y espacio */
-input[type="file"], #evidence {
-    width: 100%;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    padding: 12px;
-    background: #faf5ff;
-    border: 2px dashed #cbd5e1;
-    border-radius: 10px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-    margin-top: 4px;
-}
-
-input[type="file"]:hover {
-    border-color: #a855f7;
 }
 
 input[type="file"]::file-selector-button {
@@ -121,16 +112,9 @@ input[type="file"]::file-selector-button:hover {
     opacity: 0.9;
 }
 
-/* Animación sutil de aparición para la vista previa con márgenes independientes */
 @keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 #imagePreview {
@@ -144,7 +128,34 @@ input[type="file"]::file-selector-button:hover {
     animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Botón de envío con separación superior destacada y padding ergonómico */
+/* Feature 1: Estilos de visualización de coordenadas */
+.coords-display {
+    background: #faf5ff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    color: var(--text-main);
+    margin-top: 16px;
+    border: 2px dashed #a855f7;
+}
+
+.coords-display p {
+    margin: 4px 0;
+    font-weight: 600;
+}
+
+/* Feedback visual de validación y estado */
+.status-message {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 12px;
+    min-height: 20px;
+}
+.status-error { color: #ef4444; }
+.status-success { color: #10b981; }
+.status-loading { color: #f59e0b; }
+
 #submitBtn {
     width: 100%;
     padding: 16px;
@@ -157,7 +168,7 @@ input[type="file"]::file-selector-button:hover {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
-    margin-top: 24px;
+    margin-top: 16px;
 }
 
 #submitBtn:hover:not(:disabled) {
@@ -170,7 +181,6 @@ input[type="file"]::file-selector-button:hover {
     transform: translateY(0);
 }
 
-/* Estado deshabilitado neutro */
 #submitBtn:disabled {
     background: var(--disabled-bg);
     color: var(--disabled-text);
