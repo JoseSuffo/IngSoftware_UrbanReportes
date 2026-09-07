@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PWA ciudadana para reportes urbanos anónimos.">
     <title>Urban Reportes</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <main class="app-container">
+        <!-- Feature 3: Panel de Gamificación Local -->
+        <div class="gamification-panel">
+            <span class="badge" aria-label="Insignias"> <span id="badgeCount">0</span></span>
+            <span class="points" aria-label="Puntos"> <span id="pointCount">0</span> pts</span>
+        </div>
+
         <header>
             <h1>Nuevo Urban Reporte</h1>
         </header>
@@ -33,7 +40,16 @@
                 <img id="imagePreview" alt="Vista previa de la foto" style="display: none; max-width: 100%; height: auto;">
             </div>
 
-            <button type="submit" id="submitBtn" class="btn-submit" disabled>Enviar Reporte</button>
+            <!-- Feature 1: Contenedor visual de coordenadas GPS -->
+            <div id="coordsContainer" class="coords-display" style="display: none;">
+                <p> <strong>Latitud:</strong> <span id="latText">-</span></p>
+                <p> <strong>Longitud:</strong> <span id="lngText">-</span></p>
+            </div>
+
+            <!-- Feedback visual sin usar alertas del navegador -->
+            <div id="statusMessage" class="status-message" aria-live="polite"></div>
+
+            <button type="submit" id="submitBtn" class="btn-submit" disabled>Enviar Reporte Anónimo</button>
         </form>
     </main>
 
