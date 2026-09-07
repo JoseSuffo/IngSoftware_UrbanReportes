@@ -1,4 +1,5 @@
 {
+  "id": "./index.html",
   "name": "Urban Reportes",
   "short_name": "UrbanReportes",
   "start_url": "./index.html",
@@ -8,15 +9,30 @@
   "icons": [
     {
       "src": "icon-192.png",
-      "sizes": "192x192",
+      "sizes": "320x320",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Vista de escritorio de Urban Reportes"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "320x320",
+      "type": "image/png",
+      "label": "Vista móvil de Urban Reportes"
     }
   ]
 }
