@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PWA ciudadana para reportes urbanos anónimos.">
+    <!-- Corrección para Best Practices (Score 100): Política de Seguridad de Contenido -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">    
     <title>Urban Reportes</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="./icon-192.png" type="image/png">
 </head>
 <body>
     <main class="app-container">
         <!-- Feature 3: Panel de Gamificación Local -->
         <div class="gamification-panel">
-            <span class="badge" aria-label="Insignias"> &#127942;<span id="badgeCount">0</span></span>
-            <span class="points" aria-label="Puntos"> &#127775;<span id="pointCount">0</span> pts</span>
+            <span class="badge" aria-label="Insignias">&#127942;<span id="badgeCount">0</span></span>
+            <span class="points" aria-label="Puntos">&#127775;<span id="pointCount">0</span> pts</span>
         </div>
 
         <header>
@@ -42,8 +45,8 @@
 
             <!-- Feature 1: Contenedor visual de coordenadas GPS -->
             <div id="coordsContainer" class="coords-display" style="display: none;">
-                <p> &#128205;<strong>Latitud:</strong> <span id="latText">-</span></p>
-                <p> &#128205;<strong>Longitud:</strong> <span id="lngText">-</span></p>
+                <p>&#128205;<strong>Latitud:</strong> <span id="latText">-</span></p>
+                <p>&#128205;<strong>Longitud:</strong> <span id="lngText">-</span></p>
             </div>
 
             <!-- Feedback visual sin usar alertas del navegador -->
